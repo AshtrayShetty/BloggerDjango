@@ -7,15 +7,14 @@ from django.urls import reverse
 # Create your models here.
 
 class Post(models.Model):
-	title=models.CharField(max_length=100)
-	content=models.TextField()
-	date_posted=models.DateTimeField(default=timezone.now) 
-	#auto_now updates date and time each time update is made
-	#auto_now_add updates time and date only when the model is made
-	author=models.ForeignKey(User,on_delete=models.CASCADE)
+	title=models.CharField(max_length=100) 					#Title of the blog post
+	content=models.TextField()            					#Content inside the blog post
+	date_posted=models.DateTimeField(default=timezone.now)  #Saves the date on which the content was uploaded
+	author=models.ForeignKey(User,on_delete=models.CASCADE) #Name of the author of the post
 
 	def __str__(self):
-		return self.title
+		return self.title 									#Returns the title of the post when object is called
 
 	def get_absolute_url(self):
-		return reverse('post-detail',kwargs={'pk':self.pk})
+		return reverse('post-detail',kwargs={'pk':self.pk}) #Gets the absolute (not hardcoded) url of the post 
+															#(uses the primary key of the post for display)

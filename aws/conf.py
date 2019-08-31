@@ -1,3 +1,4 @@
+#Configurations for AWS bucket
 import datetime
 import os
 
